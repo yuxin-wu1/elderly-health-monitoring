@@ -1,0 +1,800 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 顶部导航栏 */
+.top-nav {
+    background-color: #1a73e8;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.device-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-dot.online {
+    background-color: #34a853;
+}
+
+.status-dot.offline {
+    background-color: #9aa0a6;
+}
+
+.current-time {
+    font-size: 0.9rem;
+}
+
+/* 主容器 */
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 60px - 60px); /* 减去顶部和底部栏高度 */
+}
+
+/* 侧边导航栏 */
+.side-nav {
+    background-color: white;
+    width: 200px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+    padding: 1rem 0;
+}
+
+.side-nav ul {
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.nav-item:hover {
+    background-color: #f1f3f4;
+}
+
+.nav-item.active {
+    background-color: #e8f0fe;
+    border-left-color: #1a73e8;
+    color: #1a73e8;
+    font-weight: 500;
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+}
+
+/* 主内容区 */
+.content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.module {
+    display: none;
+}
+
+.module.active {
+    display: block;
+}
+
+/* 当前状态卡片 */
+.status-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.status-card h2 {
+    margin-bottom: 1rem;
+    color: #1a73e8;
+    font-size: 1.3rem;
+}
+
+.status-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-item .label {
+    font-weight: 500;
+    color: #666;
+}
+
+.status-item .value {
+    font-weight: 600;
+}
+
+.status-normal {
+    color: #34a853;
+}
+
+.status-abnormal {
+    color: #ea4335;
+}
+
+/* 数据看板 */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-card h3 {
+    margin-bottom: 1rem;
+    color: #1a73e8;
+    font-size: 1.1rem;
+}
+
+/* 健康指标 */
+.health-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.health-item {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.health-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.health-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+.health-unit {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 0.2rem;
+}
+
+/* 设备状态 */
+.device-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.device-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.device-label {
+    font-weight: 500;
+    color: #666;
+}
+
+.battery-level {
+    width: 100px;
+    height: 10px;
+    background-color: #e8f0fe;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-right: 0.5rem;
+}
+
+.battery-level::after {
+    content: '';
+    display: block;
+    height: 100%;
+    background-color: #34a853;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.signal-level {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.signal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+}
+
+.signal-dot.active {
+    background-color: #1a73e8;
+}
+
+/* 最近告警列表 */
+.alerts-section {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.alerts-section h3 {
+    margin-bottom: 1rem;
+    color: #1a73e8;
+    font-size: 1.1rem;
+}
+
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.alert-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.alert-item:hover {
+    border-color: #1a73e8;
+    box-shadow: 0 2px 4px rgba(26, 115, 232, 0.1);
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.alert-type {
+    padding: 0.2rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.alert-type.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.alert-type.info {
+    background-color: #cce7ff;
+    color: #004085;
+}
+
+.alert-time {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.alert-content {
+    margin-bottom: 0.5rem;
+}
+
+.alert-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.alert-info {
+    margin-bottom: 1rem;
+}
+
+.alert-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.alert-actions textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+    margin-bottom: 0.8rem;
+}
+
+/* 底部栏 */
+.bottom-bar {
+    background-color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.emergency-btn {
+    background-color: #ea4335;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.emergency-btn:hover {
+    background-color: #d33a2c;
+}
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: #1a73e8;
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 1.1rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    padding: 1rem 1.5rem;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+}
+
+/* 按钮样式 */
+.btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #1a73e8;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1557b0;
+}
+
+.btn-secondary {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #e0e0e0;
+}
+
+.btn-secondary:hover {
+    background-color: #e8eaed;
+}
+
+.btn-danger {
+    background-color: #ea4335;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #d33a2c;
+}
+
+/* 行为监测模块样式 */
+.behavior-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.behavior-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.behavior-item .label {
+    font-weight: 500;
+    color: #666;
+}
+
+.behavior-item .value {
+    font-weight: 600;
+}
+
+.behavior-history table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.behavior-history th,
+.behavior-history td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.behavior-history th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* 健康数据模块样式 */
+.health-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.health-value-large {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1a73e8;
+}
+
+.health-status {
+    padding: 0.3rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.health-status.normal {
+    background-color: #e6f4ea;
+    color: #2e7d32;
+}
+
+.health-status.high {
+    background-color: #fce8e6;
+    color: #c62828;
+}
+
+.health-status.low {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e8f0fe;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #1a73e8;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.progress-range {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* 定位追踪模块样式 */
+.location-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.location-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.location-item .label {
+    font-weight: 500;
+    color: #666;
+}
+
+.location-item .value {
+    font-weight: 600;
+}
+
+.map-placeholder {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    min-height: 200px;
+}
+
+.map-marker {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* 系统设置模块样式 */
+.settings-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.settings-label {
+    font-weight: 500;
+    min-width: 120px;
+}
+
+.settings-unit {
+    margin-left: 0.5rem;
+    color: #666;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-switch label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-switch label:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + label {
+    background-color: #1a73e8;
+}
+
+.toggle-switch input:checked + label:before {
+    transform: translateX(26px);
+}
+
+.settings-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form-item label {
+    min-width: 80px;
+    font-weight: 500;
+}
+
+.form-item input {
+    flex: 1;
+    padding: 0.6rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .top-nav {
+        padding: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-right {
+        gap: 1rem;
+    }
+    
+    .side-nav {
+        width: 160px;
+    }
+    
+    .content {
+        padding: 1rem;
+    }
+    
+    .status-info,
+    .behavior-info,
+    .location-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .health-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .bottom-bar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+    }
+    
+    .settings-item,
+    .form-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .settings-label,
+    .form-item label {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .side-nav {
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+    
+    .side-nav ul {
+        display: flex;
+        overflow-x: auto;
+    }
+    
+    .nav-item {
+        white-space: nowrap;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+    
+    .nav-item.active {
+        border-left-color: transparent;
+        border-bottom-color: #1a73e8;
+    }
+}
